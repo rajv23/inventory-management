@@ -6,6 +6,7 @@ export default {
     orders: '注文',
     finance: '財務',
     demandForecast: '需要予測',
+    restocking: '補充',
     companyName: '触媒コンポーネンツ',
     subtitle: '在庫管理システム'
   },
@@ -106,6 +107,7 @@ export default {
     title: '注文',
     description: '顧客注文の表示と管理',
     allOrders: 'すべての注文',
+    submittedOrders: '提出済み注文',
     totalOrders: '総注文数',
     totalRevenue: '総収益',
     avgOrderValue: '平均注文額',
@@ -127,6 +129,34 @@ export default {
       expectedDelivery: '予定配達日',
       actualDelivery: '実際の配達日'
     }
+  },
+
+  // Restocking
+  restocking: {
+    title: '補充',
+    description: '需要予測に基づいた補充注文の計画と提出',
+    budgetLabel: '予算',
+    stats: {
+      budget: '予算',
+      allocated: '配分済み',
+      remaining: '残りの予算',
+      itemsRecommended: '推奨品目数'
+    },
+    table: {
+      sku: 'SKU',
+      itemName: '品目名',
+      currentStock: '現在在庫',
+      forecastedDemand: '予測需要',
+      unitCost: '単価',
+      recommendedQuantity: '推奨数量',
+      lineCost: 'ラインコスト',
+      budget: '予算',
+      totalCost: '合計コスト',
+      leadTime: 'リードタイム'
+    },
+    placeOrderButton: '注文を配置',
+    orderSuccess: '注文{orderNumber}が正常に配置されました！リードタイム：{leadTime}日',
+    noRecommendations: 'この予算には推奨事項がありません'
   },
 
   // Finance/Spending
@@ -323,7 +353,8 @@ export default {
     search: '検索',
     filter: 'フィルター',
     export: 'エクスポート',
-    items: '件'
+    items: '件',
+    days: '日'
   },
 
   // Product Names
