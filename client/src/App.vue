@@ -1,48 +1,59 @@
 <template>
-  <div class="app">
-    <header class="top-nav">
-      <div class="nav-container">
-        <div class="logo">
-          <h1>{{ t('nav.companyName') }}</h1>
-          <span class="subtitle">{{ t('nav.subtitle') }}</span>
-        </div>
-        <nav class="nav-tabs">
-          <router-link to="/" :class="{ active: $route.path === '/' }">
-            {{ t('nav.overview') }}
-          </router-link>
-          <router-link to="/inventory" :class="{ active: $route.path === '/inventory' }">
-            {{ t('nav.inventory') }}
-          </router-link>
-          <router-link to="/orders" :class="{ active: $route.path === '/orders' }">
-            {{ t('nav.orders') }}
-          </router-link>
-          <router-link to="/spending" :class="{ active: $route.path === '/spending' }">
-            {{ t('nav.finance') }}
-          </router-link>
-          <router-link to="/demand" :class="{ active: $route.path === '/demand' }">
-            {{ t('nav.demandForecast') }}
-          </router-link>
-          <router-link to="/reports" :class="{ active: $route.path === '/reports' }">
-            Reports
-          </router-link>
-        </nav>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h1>{{ t('nav.companyName') }}</h1>
+        <span class="subtitle">{{ t('nav.subtitle') }}</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <router-link to="/" class="sidebar-nav-item" :class="{ active: $route.path === '/' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>
+          <span>{{ t('nav.overview') }}</span>
+        </router-link>
+        <router-link to="/inventory" class="sidebar-nav-item" :class="{ active: $route.path === '/inventory' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5V8z"></path><path d="M3 8l9 5 9-5"></path><path d="M12 13v8"></path></svg>
+          <span>{{ t('nav.inventory') }}</span>
+        </router-link>
+        <router-link to="/orders" class="sidebar-nav-item" :class="{ active: $route.path === '/orders' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M9 3h6v3H9z"></path><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="16" y2="14"></line><line x1="8" y1="18" x2="13" y2="18"></line></svg>
+          <span>{{ t('nav.orders') }}</span>
+        </router-link>
+        <router-link to="/spending" class="sidebar-nav-item" :class="{ active: $route.path === '/spending' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.2c0 1.4 1.3 1.8 3 2.3s3 .9 3 2.3c0 1.2-1.3 2.2-3 2.2s-3-1.1-3-2.5"></path></svg>
+          <span>{{ t('nav.finance') }}</span>
+        </router-link>
+        <router-link to="/demand" class="sidebar-nav-item" :class="{ active: $route.path === '/demand' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"></polyline><polyline points="15 6 21 6 21 12"></polyline></svg>
+          <span>{{ t('nav.demandForecast') }}</span>
+        </router-link>
+        <router-link to="/restocking" class="sidebar-nav-item" :class="{ active: $route.path === '/restocking' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4v6h-6"></path><path d="M3 20v-6h6"></path><path d="M20.5 10a8.5 8.5 0 0 0-14.6-4.9L3 8"></path><path d="M3.5 14a8.5 8.5 0 0 0 14.6 4.9L21 16"></path></svg>
+          <span>{{ t('nav.restocking') }}</span>
+        </router-link>
+        <router-link to="/reports" class="sidebar-nav-item" :class="{ active: $route.path === '/reports' }">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg>
+          <span>Reports</span>
+        </router-link>
+      </nav>
+
+      <div class="sidebar-footer">
         <LanguageSwitcher />
         <ProfileMenu
           @show-profile-details="showProfileDetails = true"
           @show-tasks="showTasks = true"
         />
       </div>
-    </header>
-    <FilterBar />
-    <main class="main-content">
-      <router-view />
-    </main>
+    </aside>
 
-    <ProfileDetailsModal
-      :is-open="showProfileDetails"
-      @close="showProfileDetails = false"
-    />
+    <div class="content-area">
+      <FilterBar />
+      <main class="main-content">
+        <router-view />
+      </main>
+    </div>
 
+    <ProfileDetailsModal :is-open="showProfileDetails" @close="showProfileDetails = false" />
     <TasksModal
       :is-open="showTasks"
       :tasks="tasks"
@@ -176,94 +187,95 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.app {
+.app-shell {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
 }
 
-.top-nav {
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
   background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   position: sticky;
   top: 0;
-  z-index: 100;
+  overflow-y: auto;
 }
 
-.nav-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
-  height: 70px;
+.sidebar-logo {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.nav-container > .nav-tabs {
-  margin-left: auto;
-  margin-right: 1rem;
-}
-
-.nav-container > .language-switcher {
-  margin-right: 1rem;
-}
-
-.logo {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-}
-
-.logo h1 {
+.sidebar-logo h1 {
   font-size: 1.375rem;
   font-weight: 700;
   color: #0f172a;
   letter-spacing: -0.025em;
 }
 
-.subtitle {
+.sidebar-logo .subtitle {
+  display: block;
   font-size: 0.813rem;
   color: #64748b;
   font-weight: 400;
-  padding-left: 0.75rem;
-  border-left: 1px solid #e2e8f0;
+  margin-top: 0.25rem;
 }
 
-.nav-tabs {
+.sidebar-nav {
   display: flex;
+  flex-direction: column;
   gap: 0.25rem;
+  padding: 1rem 0.75rem;
+  flex: 1;
 }
 
-.nav-tabs a {
-  padding: 0.625rem 1.25rem;
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
   color: #64748b;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.938rem;
   border-radius: 6px;
+  border-left: 3px solid transparent;
   transition: all 0.2s ease;
-  position: relative;
 }
 
-.nav-tabs a:hover {
+.sidebar-nav-item svg {
+  flex-shrink: 0;
+}
+
+.sidebar-nav-item:hover {
   color: #0f172a;
   background: #f1f5f9;
 }
 
-.nav-tabs a.active {
+.sidebar-nav-item.active {
   color: #2563eb;
   background: #eff6ff;
+  border-left-color: #2563eb;
 }
 
-.nav-tabs a.active::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #2563eb;
+.sidebar-footer {
+  padding: 1rem 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.content-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
 }
 
 .main-content {
